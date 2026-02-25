@@ -69,7 +69,7 @@ async def _make_request(method: str, url: str, json: Optional[dict] = None) -> d
 )
 async def get_tts_model(_ctx: AgentCtx) -> str:
     """获取所有生成语音可用的模型"""
-    data = await _make_request("POST", "models/v4")
+    data = await _make_request("GET", "models/v4")
     data = data.get("models")  # dict[str, dict[str, list[str]]] | None
     return f"[get_tts_model Results]\n{data}\n这是语音生成接口可用的全部模型，键为模型名，值为该模型可用的语言字典，语言字典内为语气列表，请根据用户要求从中选择一个最合适的。"
 
